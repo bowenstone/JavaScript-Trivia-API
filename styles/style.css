@@ -1,9 +1,35 @@
 *   {
     box-sizing: border-box;
 }
-#question   {
-    visibility: visible;
+h2{
+    font-variant: inherit;
+    color: orange
 }
-#question:hover {
-    visibility: visible;
-} */
+#clue{
+    font-family: lora;
+    color:blanchedalmond;
+    background-color:blueviolet;
+    padding: 3%;
+}
+#answer{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(236, 138, 9);
+    font-weight: bolder;
+    padding: 3%;
+}
+button{
+    border-radius: 20%;
+    font-family: cursive;
+    background-color: cornsilk;
+    color: blueviolet;
+    padding: 2%;
+    margin: 2%;
+}
+button:hover{
+background-color: rgb(16, 214, 16)
+}
+#category{
+    text-transform: capitalize;
+    color: blueviolet;
+    font-weight: bold;
+}

@@ -7,9 +7,7 @@ function getData () {
     xhttps.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200)  {
             let jsondata = JSON.parse(this.responseText);
-            console.log('initial jsondata');
             console.log(jsondata);
-            // document.getElementById("clue").innerHTML = this.responseText;
             displayClue(jsondata);
         }
     }
@@ -19,6 +17,7 @@ function getData () {
 
 function displayClue(triviaObj) {
     let container = document.getElementById('container');
+    let category = document.getElementById('category');
     let clue = document.getElementById('clue');
     let answer = document.getElementById('answer');
 
@@ -29,46 +28,17 @@ function displayClue(triviaObj) {
     let againBtn = document.createElement('button');
     againBtn.innerText = 'Next Question ';
     container.appendChild(againBtn);
-
+    category.innerText = `Category:  ${triviaObj[0].category["title"]}`;
     clue.innerText = triviaObj[0].question;
     answerBtn.addEventListener('click', () => {
         answer.innerText = triviaObj[0].answer;
     });
     againBtn.addEventListener('click', () => {
-        answerBtn.innerHTML = '';
-        againBtn.innerHTML = '';
+        answer.innerText = "";
+        answerBtn.remove();
+        againBtn.remove();
         getData();
     });
 }
 
 getData();
-
-
-
-// function loadClue(evt) {
-//     let answer = document.getElementById('clue');
-//     let target = url + evt.target.innerText;
-//     let xhttps = new XMLHttpRequest();
-
-//     xhttps.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200)  {
-//             let jsondata = JSON.parse(this.responseText);
-//             answer.innerHTML = this.responseText;
-//         }
-//     }
-
-//     xhttps.open("GET", target, true)
-//     xhttps.send();
-// }
-
-
-// let demoEl = document.createElement('button');
-//     for (let cat of triviaObj) {
-//         console.log('in createBtns')
-//         console.log(cat)
-//         let btn = document.createElement('button');
-//         btn.addEventListener('click', loadClue);
-//         btn.innerText = cat;
-//         demoEl.appendChild(btn);
-//     }
-// }
