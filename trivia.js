@@ -18,8 +18,8 @@ function getData () {
 }
 
 function displayClue(triviaObj) {
-    let clue = document.getElementById('clue');
     let container = document.getElementById('container');
+    let clue = document.getElementById('clue');
     let answer = document.getElementById('answer');
 
     let answerBtn = document.createElement('button');
@@ -34,29 +34,32 @@ function displayClue(triviaObj) {
     answerBtn.addEventListener('click', () => {
         answer.innerText = triviaObj[0].answer;
     });
-    answerBtn.addEventListener('click', getdata);
-    
+    againBtn.addEventListener('click', () => {
+        answerBtn.innerHTML = '';
+        againBtn.innerHTML = '';
+        getData();
+    });
 }
 
 getData();
 
 
 
-function loadClue(evt) {
-    let answer = document.getElementById('clue');
-    let target = url + evt.target.innerText;
-    let xhttps = new XMLHttpRequest();
+// function loadClue(evt) {
+//     let answer = document.getElementById('clue');
+//     let target = url + evt.target.innerText;
+//     let xhttps = new XMLHttpRequest();
 
-    xhttps.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200)  {
-            let jsondata = JSON.parse(this.responseText);
-            answer.innerHTML = this.responseText;
-        }
-    }
+//     xhttps.onreadystatechange = function () {
+//         if (this.readyState == 4 && this.status == 200)  {
+//             let jsondata = JSON.parse(this.responseText);
+//             answer.innerHTML = this.responseText;
+//         }
+//     }
 
-    xhttps.open("GET", target, true)
-    xhttps.send();
-}
+//     xhttps.open("GET", target, true)
+//     xhttps.send();
+// }
 
 
 // let demoEl = document.createElement('button');
